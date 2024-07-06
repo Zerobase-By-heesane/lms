@@ -37,14 +37,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     UserAuthenticationSuccessHandler getSuccessHandler() {
         return new UserAuthenticationSuccessHandler(memberLoginHistoryRepository);
     }
-    
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/favicon.ico", "/files/**");
-        
+
         super.configure(web);
     }
-    
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -59,7 +59,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         , "/member/find-password"
                 )
                 .permitAll();
-    
+
         http.authorizeRequests()
                 .antMatchers("/admin/**")
                 .hasAuthority("ROLE_ADMIN");
@@ -74,7 +74,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);
-        
+
         http.exceptionHandling()
                 .accessDeniedPage("/error/denied");
 

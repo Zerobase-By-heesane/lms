@@ -18,26 +18,26 @@ import java.security.Principal;
 @RequiredArgsConstructor
 @RestController
 public class ApiCourseController extends BaseController {
-    
+
     private final CourseService courseService;
     private final CategoryService categoryService;
-    
+
     @PostMapping("/api/course/req.api")
     public ResponseEntity<?> courseReq(Model model
             , @RequestBody TakeCourseInput parameter
             , Principal principal) {
-        
+
         parameter.setUserId(principal.getName());
-    
+
         ServiceResult result = courseService.req(parameter);
         if (!result.isResult()) {
             ResponseResult responseResult = new ResponseResult(false, result.getMessage());
             return ResponseEntity.ok().body(responseResult);
         }
-    
+
         ResponseResult responseResult = new ResponseResult(true);
         return ResponseEntity.ok().body(responseResult);
     }
-    
-    
+
+
 }

@@ -18,7 +18,7 @@ public class PageUtil {
     private long pageBlockSize = 10;
 
     /**
-     *  현재 페이지 번호
+     * 현재 페이지 번호
      */
     private long pageIndex;
 
@@ -91,7 +91,7 @@ public class PageUtil {
         sb.append(String.format("<a href='?pageIndex=%d%s'>&lt;</a>", previousPageIndex, addQueryString));
         sb.append(System.lineSeparator());
 
-        for(long i = startPage; i<= endPage; i++) {
+        for (long i = startPage; i <= endPage; i++) {
             if (i == pageIndex) {
                 sb.append(String.format("<a class='on' href='?pageIndex=%d%s'>%d</a>", i, addQueryString, i));
             } else {
@@ -132,7 +132,6 @@ public class PageUtil {
             endPage = totalBlockCount;
         }
     }
-
 
 
 }

@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 @Data
 public class CourseDto {
-    
+
     Long id;
     long categoryId;
     String imagePath;
@@ -29,14 +29,14 @@ public class CourseDto {
     LocalDate saleEndDt;
     LocalDateTime regDt;//등록일(추가날짜)
     LocalDateTime udtDt;//수정일(수정날짜)
-    
+
     String filename;
     String urlFilename;
-    
+
     //추가컬럼
     long totalCount;
     long seq;
-    
+
     public static CourseDto of(Course course) {
         return CourseDto.builder()
                 .id(course.getId())
@@ -55,15 +55,15 @@ public class CourseDto {
                 .urlFilename(course.getUrlFilename())
                 .build();
     }
-    
+
     public static List<CourseDto> of(List<Course> courses) {
-        
+
         if (courses == null) {
             return null;
         }
-    
+
         List<CourseDto> courseList = new ArrayList<>();
-        for(Course x : courses) {
+        for (Course x : courses) {
             courseList.add(CourseDto.of(x));
         }
         return courseList;
@@ -78,9 +78,9 @@ public class CourseDto {
         }
         return null;
         */
-        
+
     }
-    
+
 }
 
 

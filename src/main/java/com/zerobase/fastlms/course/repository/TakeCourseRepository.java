@@ -8,5 +8,5 @@ import java.util.Collection;
 public interface TakeCourseRepository extends JpaRepository<TakeCourse, Long> {
 
     long countByCourseIdAndUserIdAndStatusIn(long courseId, String userId, Collection<String> statusList);
-    
+
 }

@@ -14,37 +14,37 @@ import java.time.format.DateTimeFormatter;
 @Builder
 @Data
 public class MemberDto {
-    
+
     String userId;
     String userName;
     String phone;
     String password;
     LocalDateTime regDt;
     LocalDateTime udtDt;
-    
+
     boolean emailAuthYn;
     LocalDateTime emailAuthDt;
     String emailAuthKey;
-    
+
     String resetPasswordKey;
     LocalDateTime resetPasswordLimitDt;
-    
+
     boolean adminYn;
     String userStatus;
-    
+
     private String zipcode;
     private String addr;
     private String addrDetail;
-    
+
     //추가컬럼
     long totalCount;
     long seq;
 
     // 과제로 인한 마지막 로그인 시각 추가
     String lastLoginDt;
-    
+
     public static MemberDto of(Member member) {
-        
+
         return MemberDto.builder()
                 .userId(member.getUserId())
                 .userName(member.getUserName())
@@ -59,31 +59,31 @@ public class MemberDto {
                 .resetPasswordLimitDt(member.getResetPasswordLimitDt())
                 .adminYn(member.isAdminYn())
                 .userStatus(member.getUserStatus())
-                
+
                 .zipcode(member.getZipcode())
                 .addr(member.getAddr())
                 .addrDetail(member.getAddrDetail())
-                
+
                 .build();
     }
 
-    public void setLastLoginDt(String localDateTime){
-        if(localDateTime == null){
+    public void setLastLoginDt(String localDateTime) {
+        if (localDateTime == null) {
             this.lastLoginDt = "Not Login Yet";
-        }else{
+        } else {
             this.lastLoginDt = localDateTime;
         }
     }
-    
+
     public String getRegDtText() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss");
         return regDt != null ? regDt.format(formatter) : "";
     }
-    
+
     public String getUdtDtText() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss");
         return udtDt != null ? udtDt.format(formatter) : "";
-        
+
     }
-    
+
 }

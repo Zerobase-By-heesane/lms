@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 public class Member implements MemberCode {
-    
+
     @Id
     private String userId;
     private String userName;
@@ -23,21 +23,21 @@ public class Member implements MemberCode {
     private String password;
     private LocalDateTime regDt;
     private LocalDateTime udtDt;//회원정보 수정일
-    
+
     private boolean emailAuthYn;
     private LocalDateTime emailAuthDt;
     private String emailAuthKey;
-    
+
     private String resetPasswordKey;
     private LocalDateTime resetPasswordLimitDt;
-    
+
     private boolean adminYn;
-    
+
     private String userStatus;//이용가능한상태, 정지상태
-    
-    
+
+
     private String zipcode;
     private String addr;
     private String addrDetail;
-    
+
 }
