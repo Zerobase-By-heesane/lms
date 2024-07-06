@@ -42,3 +42,5 @@ build/
 /mvnw
 /mvnw.cmd
 /files/
+application.properties
+application.yml
