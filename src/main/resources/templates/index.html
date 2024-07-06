@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>메인 페이지</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <style>
+        .home__slider {
+            max-width: 1920px;
+            margin: auto;
+        }
+        .bx-wrapper .bx-prev {
+            left: 10px;
+        }
+        .bx-wrapper .bx-next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>메인 페이지 </h1>
+<div th:replace="/fragments/layout.html :: fragment-body-menu"></div>
+
+<div class="home__slider" th:if="${bannerList != null && !bannerList.isEmpty()}">
+    <ul class="bxslider">
+        <li th:each="banner : ${bannerList}">
+            <a th:href="@{${banner.bannerLink}}" target="_blank">
+                <img th:src="@{${banner.bannerImageFileUrl}}" th:alt="${banner.bannerTitle}">
+            </a>
+        </li>
+    </ul>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.bxslider').bxSlider({
+            mode: 'fade',
+            captions: true,
+            slideWidth: 720,
+            auto: true,
+            autoControls: true,
+            stopAutoOnClick: true,
+            pager: true,
+        });
+    });
+</script>
+</body>
+</html>
